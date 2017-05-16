@@ -8,29 +8,29 @@ Chọn *Credentials* và tạo một project mới
 
 Thiết lập OAuth consent screen, lưu ý là `Homepage URL` chỉ sử dụng domain name
 
-<img src="">
+<img src="https://raw.githubusercontent.com/locvx1234/deployment-with-jenkins/master/images/OAuth_consent_screen.png">
 
 Tạo OAuth client ID
 
-<img src="">
+<img src="https://raw.githubusercontent.com/locvx1234/deployment-with-jenkins/master/images/OAuth_client_ID.png">
 
 Mục **Application type** chọn *Web application*, **Authorize redirect URLs** có dạng  JENKINS_ROOT_URL/securityRealm/finishLogin
 
-<img src="">
+<img src="https://raw.githubusercontent.com/locvx1234/deployment-with-jenkins/master/images/OAuth_client_ID2.png">
 
 Sau khi tạo xong, `Client Id` và `Client secret` được tự động sinh ra
 
 Điền chúng vào trong **Configure Global Security**
 
-<img src="">
+<img src="https://raw.githubusercontent.com/locvx1234/deployment-with-jenkins/master/images/config_global.png">
 
 Thiết lập Authorization, cấp quyền cho các user
 
-<img src="">
+<img src="https://raw.githubusercontent.com/locvx1234/deployment-with-jenkins/master/images/authorization.png">
 
 Lưu ý : cấu hình Jenkins location với domain name tương ứng trong **Configure System**
 
-<img src="">
+<img src="https://raw.githubusercontent.com/locvx1234/deployment-with-jenkins/master/images/jenkins_location.png">
 
 Do Google không cho phép sử dụng IP, và cả Port trong URL Redirect, nên ta phải dùng Haproxy, Nginx để làm reverse proxy
 
@@ -46,4 +46,10 @@ Thêm vào các dòng sau:
 		bind        *:80
 		server      jenkins 127.0.0.1:8080 check
 	
+Bây giờ khi đăng nhập vào Jenkins, ta sẽ được chuyển hướng tới Google
+
+<img src="https://raw.githubusercontent.com/locvx1234/deployment-with-jenkins/master/images/sign_in.png">
+
+
+## 
 
