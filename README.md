@@ -22,7 +22,7 @@ Jenkins sẽ sử dụng thêm các plugin : Git plugin, Ansible plugin để gi
 
 ## Deployment
 
-
+https://github.com/locvx1234/deployment-with-jenkins/blob/master/Deployment.md
 
 ## Research
 
