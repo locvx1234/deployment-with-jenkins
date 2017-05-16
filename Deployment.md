@@ -39,19 +39,19 @@ Các plugin cần cài thêm : Ansible plugin,  Promoted builds plugin (dùng ch
 
 Thao tác mẫu với Ansible plugin
 
-<img src="">
+<img src="https://raw.githubusercontent.com/locvx1234/deployment-with-jenkins/master/images/manage_plugin.png">
 
-<img src="">
+<img src="https://raw.githubusercontent.com/locvx1234/deployment-with-jenkins/master/images/ansible_plugin.png">
 
 #### Tạo credentials
 
 Chọn tab Credentals bên cột bên trái Dashbroad
 
-<img src="">
+<img src="https://raw.githubusercontent.com/locvx1234/deployment-with-jenkins/master/images/credentials.png">
 
 Có nhiều kiểu xác thực 
 
-<img src="">
+<img src="https://raw.githubusercontent.com/locvx1234/deployment-with-jenkins/master/images/credentials2.png">
 
 #### Deploy một repo Git
 
@@ -59,24 +59,25 @@ Tại Dashbroad của Jenkins chọn Jenkins/New Item
 
 Điền tên item và chọn loại Freestyle project
 
-<img src="">
-
 Tại mục *Source Code Management* chọn `Git` và điền Repository URL và chọn credentials tương ứng
 
 *Branches to build* mặc định là nhánh `master`
 
+<img src="https://raw.githubusercontent.com/locvx1234/deployment-with-jenkins/master/images/git.png">
+
 Sau khi Save cấu hình, chọn `Build Now` 
 
-<img src="">
+<img src="https://raw.githubusercontent.com/locvx1234/deployment-with-jenkins/master/images/git_build.png">
 
 Xem những gì đã diễn ra tại `Console Output`
+
 #### Build một playbook
 
 Tại mục *Build* chọn Add build step/Invoke Ansible Playbook
 
-<img src="">
+<img src="https://raw.githubusercontent.com/locvx1234/deployment-with-jenkins/master/images/ansible.png">
 
-<img src="">
+<img src="https://raw.githubusercontent.com/locvx1234/deployment-with-jenkins/master/images/ansible_build.png">
 
 Sau đó Save và Build như trên
 
