@@ -12,8 +12,17 @@ Các chức năng của Jenkins có thể được mở rộng thông qua các p
 
 ## Use case
 
+### Topo :
+
+<img src="https://github.com/locvx1234/deployment-with-jenkins/blob/master/images/topo.png">
+
+Chúng ta sử dụng Jenkins như một server trung gian nhằm mục đích phân quyền cho các user để deploy các repository từ Git server, và sử dụng Ansible để triển khai lên các server ứng dụng.
+
+Jenkins sẽ sử dụng thêm các plugin : Git plugin, Ansible plugin để giao tiếp với các phần mềm này 
 
 ## Deployment
+
+
 
 ## Research
 
