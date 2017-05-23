@@ -50,6 +50,71 @@ Bây giờ khi đăng nhập vào Jenkins, ta sẽ được chuyển hướng t�
 
 <img src="https://raw.githubusercontent.com/locvx1234/deployment-with-jenkins/master/images/sign_in.png">
 
+## Matrix-based security
 
-## 
+Matrix-based là một trong những cách authorization, nó cho phép xác định các permission cho user và group. 
+
+Có các nhóm permission :
+
+- Overall
+- Slave
+- Job
+- Run
+- View
+- SCM
+
+#### Overall 
+
+|----------|-----------|
+|Permission|Description|
+|----------|-----------|
+|Administer|Thay đổi cấu hình trên toàn hệ thống |
+|Read	   |Xem gần như toàn bộ các trang trong Jenkins |
+|RunScripts|Chạy script Groovy |
+|UploadPlugins| Upload các plugin |
+
+#### Slave
+
+|----------|-----------|
+|Permission|Description|
+|----------|-----------|
+|Configure | Cấu hình các slave tồn tại |
+|Delete	| Xóa các slave tồn tại |
+|Create | Tạo các slave mới |
+|Disconnect |Ngắt kết nối với các slave hoặc đánh dấu slave là offline |
+|Connect | Kết nối với các slave hoặc đánh dấu là online |
+
+#### Job 
+
+|----------|-----------|
+|Permission|Description|
+|----------|-----------|
+|Create | Tạo job mới |
+|Delete | Xóa job đang tồn tại |
+|Configure| Update cấu hình của job |
+|Read | Chỉ cho đọc cấu hình project |
+|Discover| Chuyển hướng người dùng ẩn danh đến một form đăng nhập thay vì đưa ra thông báo lỗi nếu họ không có quyền xem các job |
+|Build | Build job hoặc cancel job đang chạy |
+|Workspace | |
+|Cancel| cancel job đang chạy |
+
+
+#### Run
+
+|----------|-----------|
+|Permission|Description|
+|----------|-----------|
+|Delete | Xóa những lần build từ lịch sử build |
+|Update | Update các mô tả và các thuộc tính khác |
+
+#### SCM
+
+|----------|-----------|
+|Permission|Description|
+|----------|-----------|
+|Tag | Tạo tag mới trong source code cho từng lần build |
+
+
+## Cấu hình Ansible 
+
 
