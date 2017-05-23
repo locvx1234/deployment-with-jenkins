@@ -95,7 +95,7 @@ Có các nhóm permission :
 |Read | Chỉ cho đọc cấu hình project |
 |Discover| Chuyển hướng người dùng ẩn danh đến một form đăng nhập thay vì đưa ra thông báo lỗi nếu họ không có quyền xem các job |
 |Build | Build job hoặc cancel job đang chạy |
-|Workspace | |
+|Workspace | Xem workspace |
 |Cancel| cancel job đang chạy |
 
 
