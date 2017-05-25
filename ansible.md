@@ -31,7 +31,7 @@ Untag `sudo_user` và `ask_sudo_pass` để dùng được quyền sudo. Tuy nhi
 	#forks          = 5
 	#poll_interval  = 15
 	sudo_user      = root
-	#ask_sudo_pass = True
+	ask_sudo_pass = True
 	#ask_pass      = True
 	#transport      = smart
 	#remote_port    = 22
@@ -40,17 +40,19 @@ Untag `sudo_user` và `ask_sudo_pass` để dùng được quyền sudo. Tuy nhi
 	
 Cài đặt đúng path của private key. Nếu không dùng key, thêm -k sau mỗi lệnh để điền pass.
 
-	#if set, always use this private key file for authentication, same as
-	#if passing --private-key to ansible or ansible-playbook
+```
+	# if set, always use this private key file for authentication, same as
+	# if passing --private-key to ansible or ansible-playbook
 	private_key_file = /home/hexa/.ssh/id_ansible	
-	
+```
+
 ## Một số lệnh test
 
-Chạy lệnh `ifconfig` trên server test (cài đặt trong `/etc/ansible/hosts`)
+Chạy lệnh `ifconfig` trên server `test` (cài đặt trong `/etc/ansible/hosts`)
 
 	ansible test -m shell -a "ifconfig"
 
-Cài đặt htop cho toàn bộ server được cấu hình (lệnh chỉ chạy được khi có cấu hình hoi pass sudo)
+Cài đặt htop cho toàn bộ server được cấu hình (lệnh chỉ chạy được khi có cấu hình hỏi pass sudo)
 
 	ansible all -m apt -a "name=htop force=yes"
 	
@@ -65,19 +67,19 @@ Cài đặt htop cho toàn bộ server được cấu hình (lệnh chỉ chạy
 - Cài đặt nginx:
 
 ```
-	- hosts: ubuntu14
-	  remote_user: hexa
-	  become: yes
-	  tasks:
-		- name: Installs nginx web server
-		  apt: pkg=nginx state=installed update_cache=true force=yes
-		  notify:
-			- start nginx
+- hosts: ubuntu14
+  remote_user: hexa
+  become: yes
+  tasks:
+	- name: Installs nginx web server
+	  apt: pkg=nginx state=installed update_cache=true force=yes
+	  notify:
+		- start nginx
 
-	  handlers:
-		- name: start nginx
-		  service: name=nginx state=started
-	
+  handlers:
+	- name: start nginx
+	  service: name=nginx state=started
+
 ```	
 
 + become: yes: chạy lệnh dưới quyền của user_remote. Mặc định là root.
@@ -85,11 +87,11 @@ Cài đặt htop cho toàn bộ server được cấu hình (lệnh chỉ chạy
 - Chạy 1 script:
 
 ```
-	- hosts: ubuntu14
-	  remote_user: hexa
-	  become: yes
-	  tasks:
-		- script: /home/hexa/test.sh
+- hosts: ubuntu14
+  remote_user: hexa
+  become: yes
+  tasks:
+	- script: /home/hexa/test.sh
 ```
 
 
@@ -116,41 +118,42 @@ Ansible sẽ hỏi pass mỗi lần chạy
 #### Config password cho mỗi server ngay trong file hosts `/etc/ansible/hosts`.
 
 ```
-	[elk]
-	elasticsearch ansible_ssh_host=192.168.169.136
-	kafka ansible_ssh_host=192.168.169.159 ansible_become_pass=password
-	logstash ansible_ssh_host=192.168.169.160
+[elk]
+elasticsearch ansible_ssh_host=192.168.169.136
+kafka ansible_ssh_host=192.168.169.159 ansible_become_pass=password
+logstash ansible_ssh_host=192.168.169.160
 
-	[ubuntu14]
-	168 ansible_ssh_host=192.168.169.168 ansible_become_pass= password
+[ubuntu14]
+168 ansible_ssh_host=192.168.169.168 ansible_become_pass= password
+```
 
 Hoặc cấp luôn cho cả group
 
-	[all:vars]
-	ansible_become_pass=default_sudo_password_for_all_hosts
+```
+[all:vars]
+ansible_become_pass=default_sudo_password_for_all_hosts
 
 [group1:vars]
-
-	ansible_become_pass=default_sudo_password_for_group1
+ansible_become_pass=default_sudo_password_for_group1
 ```	
 
 #### Đặt password trong 1 file và trỏ đến
 
 ```
-	- hosts: ubuntu14
-	  remote_user: hexa
-	  become: yes
-	  vars_files:
-	   - pass
-	  tasks:
-	   - name: Installs nginx web server
-	  apt: pkg=nginx state=installed update_cache=true force=yes
-	  notify:
-	   - start nginx
+- hosts: ubuntu14
+  remote_user: hexa
+  become: yes
+  vars_files:
+   - pass
+  tasks:
+   - name: Installs nginx web server
+  apt: pkg=nginx state=installed update_cache=true force=yes
+  notify:
+   - start nginx
 
-	  handlers:
-	   - name: start nginx
-	   service: name=nginx state=started
+  handlers:
+   - name: start nginx
+   service: name=nginx state=started
 ```
 
 File pass đặt cùng directory với play-book. Nội dung như sau:
