@@ -112,4 +112,4 @@ Có các nhóm permission :
 
 ## Về Ansible 
 
-Link 
+Link : https://github.com/locvx1234/deployment-with-jenkins/blob/master/ansible.md

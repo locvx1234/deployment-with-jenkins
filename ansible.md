@@ -6,22 +6,22 @@
 
 ## Cài đặt: 
 
-- Ubuntu 14.04:
+Ubuntu 14.04:
 
 	sudo apt-add-repository -y ppa:ansible/ansible
 	sudo apt-get update
 	sudo apt-get install -y ansible
 
 
-- Check phiên bản
+Check phiên bản
 
 	ansible --version
 	
 ## Sử dụng
 
 Sử dụng key hoặc pass để ssh đến server
-- Config: /etc/ansible/ansible.cfg
-- Untag sudo_user và ask_sudo_pass để dùng được quyền sudo. Tuy nhiên bị hỏi pass sau mỗi câu lệnh
+Config: `/etc/ansible/ansible.cfg`
+Untag `sudo_user` và `ask_sudo_pass` để dùng được quyền sudo. Tuy nhiên bị hỏi pass sau mỗi câu lệnh
 
 	#inventory      = /etc/ansible/hosts
 	#library        = /usr/share/my_modules/
@@ -38,15 +38,15 @@ Sử dụng key hoặc pass để ssh đến server
 	#module_lang    = C
 	#module_set_locale = False
 	
-- Cài đặt đúng path của private key. Nếu không dùng key, thêm -k sau mỗi lệnh để điền pass.
+Cài đặt đúng path của private key. Nếu không dùng key, thêm -k sau mỗi lệnh để điền pass.
 
-	# if set, always use this private key file for authentication, same as
-	# if passing --private-key to ansible or ansible-playbook
+	#if set, always use this private key file for authentication, same as
+	#if passing --private-key to ansible or ansible-playbook
 	private_key_file = /home/hexa/.ssh/id_ansible	
 	
 ## Một số lệnh test
 
-Chạy lệnh ifconfig trên server test (cài đặt trong /etc/ansible/hosts)
+Chạy lệnh `ifconfig` trên server test (cài đặt trong `/etc/ansible/hosts`)
 
 	ansible test -m shell -a "ifconfig"
 
@@ -64,6 +64,7 @@ Cài đặt htop cho toàn bộ server được cấu hình (lệnh chỉ chạy
 
 - Cài đặt nginx:
 
+```
 	- hosts: ubuntu14
 	  remote_user: hexa
 	  become: yes
@@ -77,16 +78,20 @@ Cài đặt htop cho toàn bộ server được cấu hình (lệnh chỉ chạy
 		- name: start nginx
 		  service: name=nginx state=started
 	
-	
+```	
+
 + become: yes: chạy lệnh dưới quyền của user_remote. Mặc định là root.
 
 - Chạy 1 script:
 
+```
 	- hosts: ubuntu14
 	  remote_user: hexa
 	  become: yes
 	  tasks:
 		- script: /home/hexa/test.sh
+```
+
 
 #### Chạy 1 playbook:
 
@@ -106,10 +111,11 @@ Ansible sẽ hỏi pass mỗi lần chạy
 
 	ansible-playbook playbook.yml -i inventory.ini --user=username --extra-vars "ansible_become_pass=yourPassword"
 	
--i inventory.ini : liệt kê các server sẽ chạy playbook
+`-i inventory.ini` : liệt kê các server sẽ chạy playbook
 
-#### Config password cho mỗi server ngay trong file host.
+#### Config password cho mỗi server ngay trong file hosts `/etc/ansible/hosts`.
 
+```
 	[elk]
 	elasticsearch ansible_ssh_host=192.168.169.136
 	kafka ansible_ssh_host=192.168.169.159 ansible_become_pass=password
@@ -126,9 +132,11 @@ Hoặc cấp luôn cho cả group
 [group1:vars]
 
 	ansible_become_pass=default_sudo_password_for_group1
-	
+```	
+
 #### Đặt password trong 1 file và trỏ đến
 
+```
 	- hosts: ubuntu14
 	  remote_user: hexa
 	  become: yes
@@ -143,6 +151,7 @@ Hoặc cấp luôn cho cả group
 	  handlers:
 	   - name: start nginx
 	   service: name=nginx state=started
+```
 
 File pass đặt cùng directory với play-book. Nội dung như sau:
 
@@ -150,7 +159,7 @@ File pass đặt cùng directory với play-book. Nội dung như sau:
 	
 ## Vấn đề mã hóa
 
-Ansible cung cấp giải pháp mã hóa cho file play-book, hoặc các file text khác gọi là ansible-vault
+Ansible cung cấp giải pháp mã hóa cho file play-book, hoặc các file text khác gọi là `ansible-vault`
 
 #### Tạo file
 
