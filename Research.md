@@ -65,7 +65,6 @@ Có các nhóm permission :
 
 #### Overall 
 
-|----------|-----------|
 |Permission|Description|
 |----------|-----------|
 |Administer|Thay đổi cấu hình trên toàn hệ thống |
@@ -75,7 +74,6 @@ Có các nhóm permission :
 
 #### Slave
 
-|----------|-----------|
 |Permission|Description|
 |----------|-----------|
 |Configure | Cấu hình các slave tồn tại |
@@ -86,22 +84,20 @@ Có các nhóm permission :
 
 #### Job 
 
-|----------|-----------|
 |Permission|Description|
 |----------|-----------|
-|Create | Tạo job mới |
-|Delete | Xóa job đang tồn tại |
-|Configure| Update cấu hình của job |
-|Read | Chỉ cho đọc cấu hình project |
-|Discover| Chuyển hướng người dùng ẩn danh đến một form đăng nhập thay vì đưa ra thông báo lỗi nếu họ không có quyền xem các job |
-|Build | Build job hoặc cancel job đang chạy |
+|Create    | Tạo job mới |
+|Delete    | Xóa job đang tồn tại |
+|Configure | Update cấu hình của job |
+|Read      | Chỉ cho đọc cấu hình project |
+|Discover  | Chuyển hướng người dùng ẩn danh đến một form đăng nhập thay vì đưa ra thông báo lỗi nếu họ không có quyền xem các job |
+|Build 	   | Build job hoặc cancel job đang chạy |
 |Workspace | Xem workspace |
-|Cancel| cancel job đang chạy |
+|Cancel	   | cancel job đang chạy |
 
 
 #### Run
 
-|----------|-----------|
 |Permission|Description|
 |----------|-----------|
 |Delete | Xóa những lần build từ lịch sử build |
@@ -109,7 +105,6 @@ Có các nhóm permission :
 
 #### SCM
 
-|----------|-----------|
 |Permission|Description|
 |----------|-----------|
 |Tag | Tạo tag mới trong source code cho từng lần build |
