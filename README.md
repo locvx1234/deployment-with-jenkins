@@ -32,6 +32,10 @@ Chi tiết hơn về redirect để login bằng account Google,  các permissio
 
 https://github.com/locvx1234/deployment-with-jenkins/blob/master/Research.md
 
+Tự động build khi có thay đổi và send mail cho admin
+
+[Jenkins auto build and send mail](Jenkins-auto-build-and-send-mail.md)
+
 ## Reference
 
 https://vi.wikipedia.org/wiki/Jenkins_(ph%E1%BA%A7n_m%E1%BB%81m)
