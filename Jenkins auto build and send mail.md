@@ -45,5 +45,6 @@ Cuối cùng là cấu hình Jenkin Project, trong phần Build Triggers tích c
 
 # Tham khảo
 http://www.andyfrench.info/2015/03/automatically-triggering-jenkins-build.html
+
 https://medium.com/@MaciejNajbar/setup-jenkins-for-private-repository-9060f54eeac9
 
